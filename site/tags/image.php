@@ -52,9 +52,9 @@ kirbytext::$tags["image"] = array(
         if(empty($alt)) $alt = " ";
 
         // link builder
-        $_link = function($image) use($tag, $url, $link, $file) {
+        $_link = function($files) use($tag, $url, $link, $file) {
 
-            if(empty($link)) return $image;
+            if(empty($link)) return $files;
 
             // build the href for the link
             if($link == "self") {
@@ -67,7 +67,7 @@ kirbytext::$tags["image"] = array(
                 $href = $link;
             }
 
-            return html::a(url($href), $image, array(
+            return html::a(url($href), $files, array(
                 "rel"    => $tag->attr("rel"),
                 "class"  => $tag->attr("linkclass"),
                 "title"  => $tag->attr("title"),
@@ -79,16 +79,16 @@ kirbytext::$tags["image"] = array(
         if(kirby()->option("kirbytext.image.figure") or !empty($caption)) {
             // if file wasn't found return simple image else build responsive image
             if(!$file) {
-                $image = $_link(html::img($url, array("alt" => $alt)));
+                $files = $_link(html::img($url, array("alt" => $alt)));
             } else {
-                $image = $_link($file->genResponsiveImage($tag->attr("imgclass", "img-fluid"), $width, $height, $url, $alt, $title));
+                $files = $_link($file->genResponsiveImage($tag->attr("imgclass", "img-fluid"), $width, $height, $url, $alt, $title));
 
                 // if image file was found add img-wrapper to avoid jumpy website when images get loaded
                 $image_wrapper = new Brick("div");
                     $image_wrapper->addClass("img-wrapper");
                     // add padding based on aspect ratio
                     $image_wrapper->attr("style", "padding-bottom: " . $file->height() / $file->width() * 100 . "%");
-                    $image_wrapper->append($image);
+                    $image_wrapper->append($files);
             }
 
             $figure = new Brick("figure");
@@ -96,7 +96,7 @@ kirbytext::$tags["image"] = array(
                 if(isset($image_wrapper)) {
                     $figure->append($image_wrapper);
                 } else {
-                    $figure->append($image);
+                    $figure->append($files);
                 }
                 if(!empty($caption)) {
                     $figure->append("<figcaption class=\"figure-caption d-flex mt-1\"><div class=\"mr-2\">&#11025;</div>" . escape::html($caption) . "</figcaption>");
@@ -181,12 +181,12 @@ kirbytext::$tags["image"] = array(
 
             // if file wasn't found return simple image else build responsive image
             if(!$file) {
-                $image = $_link(html::img($url, array("alt" => $alt)));
+                $files = $_link(html::img($url, array("alt" => $alt)));
             } else {
-                $image = $_link($file->genResponsiveImage($class, $width, $height, $url, $alt, $title));
+                $files = $_link($file->genResponsiveImage($class, $width, $height, $url, $alt, $title));
             }
 
-            return $image;
+            return $files;
         }
 
     }

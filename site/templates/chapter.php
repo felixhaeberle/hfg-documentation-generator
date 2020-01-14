@@ -4,7 +4,7 @@
 
         <div class="container ml-md-0 my-3 my-md-5">
             <!-- PAGE CONTENT -->
-            <?php if($page->is($page->parent()->children()->visible()->first())) snippet("introduction") ?>
+            <?php if($page->is($page->parent()->children()->listed()->first())) snippet("introduction") ?>
 
                 <!-- CHAPTER WRAPPER -->
                 <div id="chapter-wrapper" class="position-relative">
@@ -19,10 +19,10 @@
                                 <?= file_get_contents(kirby()->roots()->assets() . "/images/arrow_right_long.svg"); ?>
                             </div>
                             <div class="col-9 col-6 col-md-6">
-                                <h1 class="text-primary"><?= $page->title()->html() ?></h1>
+                                <h1 class="text-primary"><?= $page->title()?></h1>
                             </div>
                             <div class="d-none d-md-block col-3"><!-- PLACEHOLDER COLUMN --></div>
-                            <?= $page->text()->kirbytext()->columnify() ?>
+                            <?= $page->text()->columnify() ?>
                         </section>
                         <!-- MAIN CHAPTER END -->
 

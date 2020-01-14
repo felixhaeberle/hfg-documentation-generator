@@ -5,9 +5,9 @@
 
   <div id="row" class="row my-4 flex-column-reverse flex-md-row">
       <div class="col-11 col-sm-11 col-md-6 offset-md-1 col-lg-7 offset-lg-1 col-xl-6 offset-xl-1">
-          <h2 class="d-none d-sm-block "><?= $page->major() ?>  – <?= $page->course() ?></h2>
+          <h2 class="d-none d-sm-block "><?= $page->major() ?>  – <?= $pages->course() ?></h2>
           <h1 class="d-none d-sm-block "><?= $page->courseTitle() ?></h1>
-          <?php foreach($page->parent()->authors()->toStructure() as $author): ?>
+          <?php foreach($pages->parent()->authors()->toStructure() as $author): ?>
           <?php if($author->website()->isNotEmpty()): ?>
               <a class="font-weight-bold" href="<?= $author->website()->url() ?>" target="_blank"><span class="mr-1">&#8594;</span><?= $author->name()->html() ?></a>
           <?php else: ?>
@@ -21,7 +21,7 @@
                 <hr align="left" class="mt-0 ml-0">
             </div>
             <div class="small">Supervision<br>
-                <?php foreach($page->supervisors()->split() as $supervisor): ?>
+                <?php foreach($pages->supervisors()->split() as $supervisor): ?>
                     <?= $supervisor ?><br>
                 <?php endforeach ?>
                 <hr align="left" class="d-md-none ml-0"><br>
@@ -32,10 +32,10 @@
   </div>
         <!-- Side Info -->
         <div class="col-12 overview-container">
-        <?php if($site->hasVisibleChildren()): ?>
+        <?php if($site->hasListedChildren()): ?>
         <ul class="col-10"id="overview-list">
-            <?php foreach($site->children()->visible() as $documentation): ?>
-                <li ><a href="<?= $documentation->children()->visible()->first()->url()?>">
+            <?php foreach($site->children()->listed() as $documentation): ?>
+                <li ><a href="<?= $documentation->children()->listed()->first()->url()?>">
                     <?php
                     $cover = $documentation->coverImage()->toFile();
                     if ($cover) {
@@ -70,7 +70,7 @@
 <div id="row2" class="row my-4 flex-column-reverse flex-md-row">
   <div id="briefing" class="col-11 col-md-6 offset-md-1 col-lg-7 offset-lg-1 col-xl-6 offset-xl-1">
     <h5>Briefing</h5>
-    <div name="briefing" class="important font-weight-semibold"><?= $page->text()->kirbytext() ?></div>
+    <div name="briefing" class="important font-weight-semibold"><?= $pages->text()->kirbytext() ?></div>
   </div>
 
   <div class="col-11 col-md-3 col-lg-2 offset-md-1 pull-right">

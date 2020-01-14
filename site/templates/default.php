@@ -6,9 +6,9 @@
             <!-- PAGE CONTENT -->
             <div class="row">
                 <div class="col-10 offset-1">
-                    <h1><?= $page->title()->html() ?></h1>
-                    <?= $page->intro()->kirbytext() ?>
-                    <?= $page->text()->kirbytext() ?>
+                    <h1><?= $page->title() ?></h1>
+                    <?= $page->intro() ?>
+                    <?= $page->text() ?>
                 </div>
             </div>
             <!-- PAGE CONTENT END -->

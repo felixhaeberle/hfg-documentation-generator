@@ -5,14 +5,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title><?= $page->parent()->title()->html() ?> | <?= $page->title()->html() ?></title>
-    <meta name="description" content="<?= $site->description()->html() ?>">
+    <title><?= $pages->parent()->title() ?> | <?= $pages->title()?></title>
+    <meta name="description" content="<?= $site->description() ?>">
 
     <!-- CSS -->
     <!-- highlight.js -->
     <?= css("assets/vendor/highlightjs/styles/monokai-sublime.css") ?>
     <!-- Custom template css and index.css -->
-    <?php snippet("scss") ?>
+    <?= css("assets/css/index.css") ?>
 
 </head>
 <body>

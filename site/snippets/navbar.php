@@ -4,10 +4,10 @@
     // set brandLink. If there is more than one documentation link to overview page,
     // else to first chapter of current documentation
     $brandLink = "";
-    if($is_overview == false && site()->hasVisibleChildren() > 1 || site()->hasVisibleChildren() == 0) {
+    if($is_overview == false && site()->hasListedChildren() > 1 || site()->hasListedChildren() == 0) {
         $brandLink = $site->page("overview")->url();
-    } else if($is_overview == false && $page->parent()->children()->visible()->first()) {
-        $brandLink = $page->parent()->children()->visible()->first()->url();
+    } else if($is_overview == false && $page->parent()->children()->listed()->first()) {
+        $brandLink = $page->parent()->children()->listed()->first()->url();
     }
 ?>
 

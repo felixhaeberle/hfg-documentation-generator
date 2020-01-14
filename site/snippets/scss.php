@@ -20,7 +20,7 @@ $indexCSS          = $root . "/assets/css/index.css";
 $indexCSSKirbyPath = "/assets/css/index.css";
 
 // Set file paths. Used for checking and updating CSS file for current template.
-$template     = $page->template();
+$template     = $pages->template();
 $SCSS         = $root . "/assets/scss/templates/" . $template . ".scss";
 $CSS          = $root . "/assets/css/templates/"  . $template . ".css";
 $CSSKirbyPath = "assets/css/templates/" . $template . ".css";

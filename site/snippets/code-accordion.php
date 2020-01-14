@@ -1,4 +1,4 @@
-<?php $currentAccordionID = $page->getUniqueCodeAccordionID() ?>
+<?php $currentAccordionID = $pages->getUniqueCodeAccordionID() ?>
 
 <div class="accordion code mb-3" id=<?= "code-accordion-" . $currentAccordionID ?>>
     <div class="card rounded bg-dark" style="overflow: hidden;">

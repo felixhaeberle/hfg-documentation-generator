@@ -1,5 +1,5 @@
 <?php
-    if(!isset($chapters)) $chapters = $page->parent()->children()->visible();
+    if(!isset($chapters)) $chapters = $page->parent()->children()->listed();
     $nested = isset($nested) && $nested == true;
 ?>
 
@@ -12,7 +12,7 @@
 
             <!-- SUBCHAPTERS OF CURRENT CHAPTER -->
             <?php if($chapter->is($page) || $page->isAncestorOf($chapter)): ?>
-                <?php snippet("menu", array("chapters" => $chapter->children()->visible(), "nested" => true)) ?>
+                <?php snippet("menu", array("chapters" => $chapter->children()->listed(), "nested" => true)) ?>
             <?php endif ?>
         </li>
     <?php endforeach ?>

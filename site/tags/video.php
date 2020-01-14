@@ -23,8 +23,8 @@ kirbytext::$tags["video"] = array(
         });
 
         // get possible fallback images by searching for images with matching name
-        $filteredImages = $tag->page()->images()->filter(function($image) use($videoName) {
-            return $image->name() === $videoName;
+        $filteredImages = $tag->page()->images()->filter(function($files) use($videoName) {
+            return $files->name() === $videoName;
         });
 
         // function that generates all available source tags and optional fallback image and returns it as a string
@@ -35,8 +35,8 @@ kirbytext::$tags["video"] = array(
                 $generateVideoSourcesStr .= "<source src=\"" . $video->url() . "\" type=\"" . $video->mime() . "\"/>";
             }
 
-            foreach($filteredImages as $key => $image) {
-                $generateVideoSourcesStr .= kirbytag(array("image" => $image->url(), "alt" => $image->filename(), "title" => "Your browser does not support the <video> tag"));
+            foreach($filteredImages as $key => $files) {
+                $generateVideoSourcesStr .= kirbytag(array("image" => $files->url(), "alt" => $files->filename(), "title" => "Your browser does not support the <video> tag"));
             }
 
             return $generateVideoSourcesStr;

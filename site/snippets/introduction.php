@@ -1,6 +1,6 @@
 <div id="introduction">
     <div class="row">
-        <div class="<?= c::get("columnify.default")["element_class"] ?>">
+        <div class="col offset-md-1 offset-lg-2  offset-xl-2">
             <h1 class="d-none d-sm-block font-weight-bold"><?= $page->parent()->title()->html() ?></h1>
             <h2 class="d-block d-sm-none font-weight-bold"><?= $page->parent()->title()->html() ?></h2>
 
@@ -12,8 +12,8 @@
             <?php endif ?>
             <?php endforeach ?>
         </div>
-        <div class="<?= c::get("columnify.default")["placeholder_classes"][0] ?>"><!-- PLACEHOLDER COLUMN --></div>
-        <div class="<?= c::get("columnify.default")["placeholder_classes"][1] ?>"><!-- PLACEHOLDER COLUMN --></div>
+        <div class="d-none d-lg-block col-lg-1 col-xl-3"><!-- PLACEHOLDER COLUMN --></div>
+        <div class="w-100"><!-- PLACEHOLDER COLUMN --></div>
     </div>
 
     <div class="row my-4 flex-column-reverse flex-md-row">
