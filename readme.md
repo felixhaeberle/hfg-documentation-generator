@@ -1,4 +1,4 @@
-HfG Documentation Generator
+HfG Documentation Generator - <span style="color:red">Kirby V3 Port</span>
 ==========================
 
 Simple web documentation generator based on [Kirby CMS](https://getkirby.com/).
